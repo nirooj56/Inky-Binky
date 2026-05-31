@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bt6ukfytociqq"]
+
+[ext_resource type="Script" uid="uid://cxpb4i8qqr7m0" path="res://scripts/pause_menu.gd" id="1_5d2l8"]
+[ext_resource type="FontFile" uid="uid://77b8k0m3otrh" path="res://assets/fonts/Lost in South.ttf" id="2_7l7mv"]
+[ext_resource type="FontFile" uid="uid://upy6yxog6g8p" path="res://assets/fonts/1942.ttf" id="3_v4r4p"]
+[ext_resource type="Texture2D" uid="uid://661afewae844" path="res://Icon.svg" id="4_1s2dm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1urxi"]
+bg_color = Color(0.7414895, 0.10421976, 1.92523e-07, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0.4210918, 0.4210918, 0.42109177, 0.47058824)
+shadow_size = 8
+shadow_offset = Vector2(3, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dthvl"]
+bg_color = Color(0.4897787, 0.055083223, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r01d7"]
+bg_color = Color(1, 0.2995034, 0.19608983, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Pause Menu" type="CanvasLayer" unique_id=956758404]
+process_mode = 2
+layer = 100
+script = ExtResource("1_5d2l8")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=2119730095]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2" unique_id=2032976190]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -84.125
+offset_right = 127.0
+offset_bottom = 84.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 27
+alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect2/VBoxContainer" unique_id=513948263]
+position = Vector2(129, -41)
+texture = ExtResource("4_1s2dm")
+
+[node name="Label" type="Label" parent="ColorRect2/VBoxContainer" unique_id=1876756344]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_font_sizes/font_size = 50
+text = "Inky binky"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="ColorRect2/VBoxContainer" unique_id=950096310]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_v4r4p")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
+toggle_mode = true
+text = "Resume"
+
+[node name="Quit" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1911724420]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_v4r4p")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
+toggle_mode = true
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect2/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

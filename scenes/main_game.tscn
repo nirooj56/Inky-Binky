@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dw005k4vpndj8" path="res://scenes/tree.tscn" id="4_ygxny"]
 [ext_resource type="FontFile" uid="uid://77b8k0m3otrh" path="res://assets/fonts/Lost in South.ttf" id="6_wi4c7"]
 [ext_resource type="FontFile" uid="uid://upy6yxog6g8p" path="res://assets/fonts/1942.ttf" id="7_70vka"]
+[ext_resource type="PackedScene" uid="uid://bt6ukfytociqq" path="res://scenes/pause_menu.tscn" id="8_70vka"]
 
 [sub_resource type="Curve2D" id="Curve2D_ygxny"]
 _data = {
@@ -149,6 +150,7 @@ offset_right = 68.0
 offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("7_70vka")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_2l77h")
@@ -156,6 +158,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_wi4c7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_70vka")
 toggle_mode = true
 text = "Restart"
+
+[node name="Pause Menu" parent="." unique_id=956758404 instance=ExtResource("8_70vka")]
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

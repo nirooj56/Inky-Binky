@@ -66,4 +66,5 @@ func _on_player_health_depleted() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	$GameOver/ColorRect/Restart.release_focus()
 	get_tree().reload_current_scene()
