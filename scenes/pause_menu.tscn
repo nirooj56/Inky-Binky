@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://77b8k0m3otrh" path="res://assets/fonts/Lost in South.ttf" id="2_7l7mv"]
 [ext_resource type="FontFile" uid="uid://upy6yxog6g8p" path="res://assets/fonts/1942.ttf" id="3_v4r4p"]
 [ext_resource type="Texture2D" uid="uid://661afewae844" path="res://Icon.svg" id="4_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://7rstfbfenj2x" path="res://assets/pause.png" id="5_7l7mv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1urxi"]
 bg_color = Color(0.7414895, 0.10421976, 1.92523e-07, 1)
@@ -51,7 +52,7 @@ anchor_bottom = 0.5
 offset_left = -127.0
 offset_top = -84.125
 offset_right = 127.0
-offset_bottom = 84.125
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 27
@@ -75,7 +76,7 @@ horizontal_alignment = 1
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_v4r4p")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
@@ -86,12 +87,26 @@ text = "Resume"
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_v4r4p")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
 toggle_mode = true
 text = "Quit"
 
+[node name="MobilePauseButton" type="Button" parent="." unique_id=1065947767]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.0
+offset_top = 31.0
+offset_right = 423.0
+offset_bottom = 551.0
+grow_horizontal = 0
+scale = Vector2(0.11413513, 0.11413513)
+icon = ExtResource("5_7l7mv")
+flat = true
+
 [connection signal="pressed" from="ColorRect2/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MobilePauseButton" to="." method="_on_mobile_pause_button_pressed"]

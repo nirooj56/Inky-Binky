@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bse5lirx0wmm3"
-valid=false
+uid="uid://7rstfbfenj2x"
+path="res://.godot/imported/pause.png-d497048eb98995ab9a2a1bb8927ffe58.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Inky-Binky.png"
+source_file="res://assets/pause.png"
+dest_files=["res://.godot/imported/pause.png-d497048eb98995ab9a2a1bb8927ffe58.ctex"]
 
 [params]
 
