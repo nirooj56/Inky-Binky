@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://criqxbnu1qhx2"]
+
+[ext_resource type="Texture2D" uid="uid://q73i1awyb84g" path="res://assets/enemies/frog.png" id="1_qyo2l"]
+[ext_resource type="Script" uid="uid://2g51lh5c5g2w" path="res://scripts/enemy_frog.gd" id="1_t757d"]
+[ext_resource type="Texture2D" uid="uid://7ng6bxxkpxgl" path="res://assets/enemies/frog_dead.png" id="2_1g2vb"]
+[ext_resource type="Texture2D" uid="uid://5wnjw623dpej" path="res://assets/enemies/frog_move.png" id="2_rq8tc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1g2vb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qyo2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1g2vb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rq8tc")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qyo2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rq8tc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybftx"]
+radius = 18.0
+
+[node name="Enemy Frog" type="CharacterBody2D" unique_id=1448135268 groups=["frog"]]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 4294967040
+script = ExtResource("1_t757d")
+
+[node name="Frog" type="AnimatedSprite2D" parent="." unique_id=1192293131]
+position = Vector2(2.3841858e-07, -34)
+scale = Vector2(0.515625, 0.515625)
+sprite_frames = SubResource("SpriteFrames_1g2vb")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1849230540]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_ybftx")
+

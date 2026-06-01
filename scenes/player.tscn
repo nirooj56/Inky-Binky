@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://c7mk8gwpcv1ba"]
+
+[ext_resource type="Texture2D" uid="uid://c4gt8jx2fnytk" path="res://assets/Inky.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://hq42viia36v3" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cl0ek7bxi5jry" path="res://assets/item_helmet.png" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bbip6vurmf4lp" path="res://scenes/gun.tscn" id="4_dqkch"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 15.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
+radius = 18.0
+height = 60.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 3
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+bg_color = Color(0.80930275, 0.13883719, 0.1930129, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="Player" type="CharacterBody2D" unique_id=979297135]
+scale = Vector2(1, 0.997831)
+platform_floor_layers = 4294967040
+script = ExtResource("1_g2els")
+
+[node name="Inky" type="Sprite2D" parent="." unique_id=1215368185]
+position = Vector2(0, 1)
+scale = Vector2(1, 1.03125)
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515704588]
+shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=810234787]
+position_smoothing_enabled = true
+
+[node name="ItemHelmet" type="Sprite2D" parent="." unique_id=1574186780]
+position = Vector2(-1, -29)
+scale = Vector2(0.9375, 0.890625)
+texture = ExtResource("3_qhqgy")
+
+[node name="Gun" parent="." unique_id=2008347565 groups=["player"] instance=ExtResource("4_dqkch")]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1531167247]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=381873758]
+shape = SubResource("CapsuleShape2D_dqkch")
+debug_color = Color(0.65732664, 0.43589237, 0.7272963, 0.41960785)
+
+[node name="ProgressBar" type="ProgressBar" parent="HurtBox" unique_id=284070178]
+unique_name_in_owner = true
+offset_left = -37.0
+offset_top = -81.17607
+offset_right = 38.0
+offset_bottom = -43.59456
+scale = Vector2(1, 0.32)
+theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qlg0r")
+value = 100.0
+show_percentage = false
+
