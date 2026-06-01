@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="Inky Binky"
+config/description="Step into a world of raw sketches and rapid-fire combat. In Inky Binky, you control a uniquely designed character fighting to stay alive against encroaching enemies on an infinite, hand-drawn battlefield.
+
+Designed with a clean, sketchy aesthetic, the game focuses on pure movement and survival. Whether you’re playing on a PC with a keyboard or on the go with your mobile device, the experience is optimized for smooth, responsive action."
+config/version="0.2.1"
 run/main_scene="uid://1h6v53ndpxtu"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://bse5lirx0wmm3"
