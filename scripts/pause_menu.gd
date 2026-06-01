@@ -19,22 +19,40 @@ func _unhandled_input(event: InputEvent) -> void:
 func toggle_pause():
 	var new_pause_state = !get_tree().paused
 	get_tree().paused = new_pause_state
-	
 	# Toggle the background rectangle
 	$ColorRect2.visible = new_pause_state
-	
-	# Print a message to the output log to confirm it's running
-	print("Is the color rect supposed to be visible right now? ", $ColorRect2.visible)
+
+# If you hid the cursor during gameplay, show it here so they can click buttons!
+	if new_pause_state:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if OS.has_feature("mobile") or OS.has_feature("android"):
 		mobile_pause_button.visible = !new_pause_state
+	
+	# MOUSE CAPTURE LOGIC 
+	if new_pause_state:
+		# Game is PAUSED: Show the mouse so they can click menu buttons
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		# Game is RESUMED: Lock the mouse back into the gameplay
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _on_resume_pressed() -> void:
 	toggle_pause()
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
-
+	# Always make sure the mouse is visible before leaving the gameplay loop
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if OS.has_feature("mobile") or OS.has_feature("android"):
+		# Unpause the engine so the menu scene actually runs!
+		get_tree().paused = false 
+		# Change back to your start menu instead of killing the app
+		get_tree().change_scene_to_file("res://scenes/game_screen.tscn") # (Make sure this matches your exact Main Menu scene filename)
+	else:
+		# Desktop players can still close the application normally
+		get_tree().quit()
 
 func _on_mobile_pause_button_pressed() -> void:
 	# Release focus so it doesn't trap keyboard inputs if a keyboard is plugged in

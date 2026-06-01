@@ -1,5 +1,9 @@
 extends Node2D
 
+func _ready() -> void:
+	# Hides the cursor during gameplay so it doesn't distract the player
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 # Spawning Frogs randomly to the game, 
 func spawn_frog():
 	var new_frog = preload("uid://criqxbnu1qhx2").instantiate()
