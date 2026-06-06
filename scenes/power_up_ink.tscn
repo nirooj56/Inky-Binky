@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b6txfmbrplwf7"]
+
+[ext_resource type="Texture2D" uid="uid://dhvsknail61rv" path="res://assets/Ink-Bottle.png" id="1_2i081"]
+[ext_resource type="Script" uid="uid://cc16afavvuk5j" path="res://scripts/power_up_ink.gd" id="1_05cww"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05cww"]
+height = 42.0
+
+[node name="PowerUpInk" type="Area2D" unique_id=1439293497]
+collision_layer = 0
+script = ExtResource("1_05cww")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=402952454]
+position = Vector2(0, -2.3841858e-07)
+scale = Vector2(0.65625, 0.875)
+texture = ExtResource("1_2i081")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1856302387]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_05cww")

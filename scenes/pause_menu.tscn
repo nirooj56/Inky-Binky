@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bt6ukfytociqq"]
 
 [ext_resource type="Script" uid="uid://cxpb4i8qqr7m0" path="res://scripts/pause_menu.gd" id="1_5d2l8"]
-[ext_resource type="FontFile" uid="uid://77b8k0m3otrh" path="res://assets/fonts/Lost in South.ttf" id="2_7l7mv"]
-[ext_resource type="FontFile" uid="uid://upy6yxog6g8p" path="res://assets/fonts/1942.ttf" id="3_v4r4p"]
+[ext_resource type="FontFile" uid="uid://dnrf55bgpi4sc" path="res://assets/fonts/BEMICYtrial.otf" id="3_5d2l8"]
 [ext_resource type="Texture2D" uid="uid://661afewae844" path="res://Icon.svg" id="4_1s2dm"]
 [ext_resource type="Texture2D" uid="uid://7rstfbfenj2x" path="res://assets/pause.png" id="5_7l7mv"]
 
@@ -59,7 +58,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="ColorRect2/VBoxContainer" unique_id=513948263]
-position = Vector2(129, -41)
+position = Vector2(140, -55.875)
 texture = ExtResource("4_1s2dm")
 
 [node name="Label" type="Label" parent="ColorRect2/VBoxContainer" unique_id=1876756344]
@@ -67,16 +66,17 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_7l7mv")
+theme_override_fonts/font = ExtResource("3_5d2l8")
 theme_override_font_sizes/font_size = 50
 text = "Inky binky"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="ColorRect2/VBoxContainer" unique_id=950096310]
 layout_mode = 2
+size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("3_v4r4p")
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_5d2l8")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
@@ -85,9 +85,10 @@ text = "Resume"
 
 [node name="Quit" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1911724420]
 layout_mode = 2
+size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("3_v4r4p")
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_5d2l8")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
@@ -110,4 +111,3 @@ flat = true
 [connection signal="pressed" from="ColorRect2/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="ColorRect2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MobilePauseButton" to="." method="_on_mobile_pause_button_pressed"]
-

@@ -7,6 +7,10 @@ signal health_depleted
 var touch_start_position = Vector2.ZERO
 var is_dragging = true
 var move_direction = Vector2.ZERO
+var pulse_time: float = 0.0
+var is_triple_shot: bool = false
+var powerup_timer: float = 0.0
+const POWERUP_DURATION: float = 7.0
 
 func _physics_process(delta: float) -> void:
 	# 1. Get keyboard input direction
@@ -28,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	const DAMAGE_RATE = 5.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
+		get_tree().call_group("Camera", "shake", 12.0, 4.0)
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%ProgressBar.value = health
 		if health <= 0.0:
@@ -45,9 +50,28 @@ func _physics_process(delta: float) -> void:
 		# If the player stops moving, instantly reset your Sprite2D back to normal
 		$Inky.rotation = 0.0
 		$Inky.position.y = 0.0
+	
+	# Low Health UI Warning (Pulsing Progress Bar)
+	if health <= 25.0 and health > 0.0:
+		# Accumulate time to handle our flashing rate speed
+		pulse_time += delta * 15.0 
+		# Use an absolute value sine wave to smoothly ping-pong transparency
+		# This moves back and forth cleanly between 0.3 (faded) and 1.0 (fully visible)
+		var flash_alpha = 0.3 + (abs(sin(pulse_time)) * 0.7)
 		
+		# Apply a  bright red color mask
+		%ProgressBar.modulate = Color(1.0, 0.1, 0.1, flash_alpha)
+	else:
+		# Reset back the color
+		%ProgressBar.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	
+	# Power up
+	if is_triple_shot:
+		powerup_timer -= delta
+		if powerup_timer <= 0.0:
+			is_triple_shot = false
+	
 func _input(event: InputEvent) -> void:
-	# Keep your working touch logic exactly as it was!
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
 			touch_start_position = event.position
@@ -64,4 +88,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			move_direction = Vector2.ZERO
 
-
+func activate_triple_shot() -> void:
+	is_triple_shot = true
+	powerup_timer = POWERUP_DURATION
+	%ProgressBar.modulate = Color(0.2, 1.0, 0.2, 1.0)

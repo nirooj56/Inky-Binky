@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://c7mk8gwpcv1ba" path="res://scenes/player.tscn" id="1_s3esy"]
 [ext_resource type="Script" uid="uid://bvy45v2uc5psf" path="res://scripts/main_game.gd" id="1_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://d0y7wwodxgy2h" path="res://scenes/bush.tscn" id="2_0rdsr"]
+[ext_resource type="FontFile" uid="uid://chhy0njiortnp" path="res://assets/fonts/Ramidots.otf" id="2_2l77h"]
 [ext_resource type="PackedScene" uid="uid://duw0jddjxv0me" path="res://scenes/spike.tscn" id="3_ipu61"]
 [ext_resource type="PackedScene" uid="uid://dw005k4vpndj8" path="res://scenes/tree.tscn" id="4_ygxny"]
-[ext_resource type="FontFile" uid="uid://77b8k0m3otrh" path="res://assets/fonts/Lost in South.ttf" id="6_wi4c7"]
-[ext_resource type="FontFile" uid="uid://upy6yxog6g8p" path="res://assets/fonts/1942.ttf" id="7_70vka"]
+[ext_resource type="FontFile" uid="uid://dnrf55bgpi4sc" path="res://assets/fonts/BEMICYtrial.otf" id="7_70vka"]
 [ext_resource type="PackedScene" uid="uid://bt6ukfytociqq" path="res://scenes/pause_menu.tscn" id="8_70vka"]
 
 [sub_resource type="Curve2D" id="Curve2D_ygxny"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -245, -260, 0, 0, 0, 0, 2044.5623, -248.80637, 0, 0, 0, 0, 2058.726, 1405.9827, 0, 0, 0, 0, -240.83415, 1405.9827, 0, 0, 0, 0, -227.50337, -203.09912)
+"points": PackedVector2Array(0, 0, 0, 0, -240.58652, -385.0843, 0, 0, 0, 0, 2129.5, -385.0843, 0, 0, 0, 0, 2129.5, 1405.9829, 0, 0, 0, 0, -240.83415, 1405.9827, 0, 0, 0, 0, -240.58652, -385.0843)
 }
 point_count = 5
 
@@ -50,18 +50,37 @@ layer = -1
 offset_right = 1912.0
 offset_bottom = 1084.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1042006567]
+z_index = 100
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 46.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=606617094]
+z_index = 100
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2l77h")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
 [node name="Player" parent="." unique_id=979297135 instance=ExtResource("1_s3esy")]
-position = Vector2(960, 544)
+position = Vector2(577, 323.00006)
 
 [node name="Path2D" type="Path2D" parent="Player" unique_id=844018348]
-position = Vector2(-1081.9437, -627.631)
-scale = Vector2(1.2002294, 1.0743704)
+position = Vector2(-860.9574, -427.23773)
+scale = Vector2(0.9062961, 0.81636894)
 curve = SubResource("Curve2D_ygxny")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=939191744]
 unique_name_in_owner = true
-position = Vector2(-245, -260)
-rotation = 0.0048889457
+position = Vector2(-240.58652, -385.0843)
 
 [node name="Obstracles" type="Node" parent="." unique_id=769506230]
 
@@ -116,40 +135,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.5137255)
+color = Color(1, 1, 1, 0.8)
 
-[node name="Label" type="Label" parent="GameOver/ColorRect" unique_id=1459177158]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ColorRect" unique_id=534467271]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -91.0
+offset_top = -62.0
+offset_right = 91.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/ColorRect/VBoxContainer" unique_id=1459177158]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("6_wi4c7")
+theme_override_fonts/font = ExtResource("7_70vka")
 theme_override_font_sizes/font_size = 50
 text = "Game Over"
 
-[node name="Restart" type="Button" parent="GameOver/ColorRect" unique_id=984515201]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = 37.0
-offset_right = 68.0
-offset_bottom = 87.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GameOverScoreLabel" type="Label" parent="GameOver/ColorRect/VBoxContainer" unique_id=1975243352]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_2l77h")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOver/ColorRect/VBoxContainer" unique_id=984515201]
+layout_mode = 2
+size_flags_vertical = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("7_70vka")
 theme_override_font_sizes/font_size = 20
@@ -157,11 +179,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2l77h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wi4c7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_70vka")
 toggle_mode = true
-text = "Restart"
+text = "Play Again"
 
 [node name="Pause Menu" parent="." unique_id=956758404 instance=ExtResource("8_70vka")]
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="GameOver/ColorRect/Restart" to="." method="_on_restart_pressed"]
-
+[connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

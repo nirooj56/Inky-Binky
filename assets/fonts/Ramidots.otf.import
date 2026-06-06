@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://upy6yxog6g8p"
-path="res://.godot/imported/1942.ttf-b9eaa19ccd91617d6dcd3230c6857dc1.fontdata"
+uid="uid://chhy0njiortnp"
+path="res://.godot/imported/Ramidots.otf-76e174b69e75e5f2cbbb5fda931fb48c.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/1942.ttf"
-dest_files=["res://.godot/imported/1942.ttf-b9eaa19ccd91617d6dcd3230c6857dc1.fontdata"]
+source_file="res://assets/fonts/Ramidots.otf"
+dest_files=["res://.godot/imported/Ramidots.otf-76e174b69e75e5f2cbbb5fda931fb48c.fontdata"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://77b8k0m3otrh"
-path="res://.godot/imported/Lost in South.ttf-c176761f9664fa43d4c7b0dcddd06e8b.fontdata"
+uid="uid://dnrf55bgpi4sc"
+path="res://.godot/imported/BEMICYtrial.otf-d9aa5138261da2090707daedd18df610.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Lost in South.ttf"
-dest_files=["res://.godot/imported/Lost in South.ttf-c176761f9664fa43d4c7b0dcddd06e8b.fontdata"]
+source_file="res://assets/fonts/BEMICYtrial.otf"
+dest_files=["res://.godot/imported/BEMICYtrial.otf-d9aa5138261da2090707daedd18df610.fontdata"]
 
 [params]
 

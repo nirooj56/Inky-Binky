@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://1h6v53ndpxtu"]
 
 [ext_resource type="Script" uid="uid://buqxi4uiulucs" path="res://scripts/game_screen.gd" id="1_3uriw"]
-[ext_resource type="FontFile" uid="uid://upy6yxog6g8p" path="res://assets/fonts/1942.ttf" id="3_rxmqw"]
-[ext_resource type="FontFile" uid="uid://77b8k0m3otrh" path="res://assets/fonts/Lost in South.ttf" id="4_dv2sx"]
+[ext_resource type="FontFile" uid="uid://dnrf55bgpi4sc" path="res://assets/fonts/BEMICYtrial.otf" id="2_3uriw"]
 [ext_resource type="Texture2D" uid="uid://661afewae844" path="res://Icon.svg" id="4_rxmqw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1urxi"]
@@ -49,7 +48,7 @@ anchor_bottom = 0.5
 offset_left = -143.5
 offset_top = -29.0
 offset_right = 143.5
-offset_bottom = 83.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -59,24 +58,39 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_dv2sx")
+theme_override_fonts/font = ExtResource("2_3uriw")
 theme_override_font_sizes/font_size = 50
 text = "Inky binky"
 
 [node name="Start" type="Button" parent="ColorRect2/VBoxContainer" unique_id=950096310]
 layout_mode = 2
+size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("3_rxmqw")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_3uriw")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
 toggle_mode = true
 text = "Start"
 
+[node name="Quit" type="Button" parent="ColorRect2/VBoxContainer" unique_id=1870683897]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3uriw")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_1urxi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dthvl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r01d7")
+toggle_mode = true
+text = "Quit"
+
 [node name="Icon" type="Sprite2D" parent="ColorRect2/VBoxContainer" unique_id=1284429821]
 position = Vector2(147, -78)
 texture = ExtResource("4_rxmqw")
 
 [connection signal="pressed" from="ColorRect2/VBoxContainer/Start" to="." method="_on_start_pressed"]
-
+[connection signal="pressed" from="ColorRect2/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ColorRect2/VBoxContainer/Quit" to="." method="_on_start_pressed"]

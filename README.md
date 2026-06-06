@@ -11,3 +11,13 @@ Technical Specs (Important for itch.io)
     Engine: Powered by Godot 4.
 
 Play it here: <a href="https://nirooj.itch.io/inky-binky"><b>Inky Binky</a></b>
+
+
+Changelog:
+
+Version 0.3.0
+Added Powerup, 
+Added Score System, 
+Added Background and Gameplay Music, 
+Added Camera Shake when player looses health, 
+Added Dynamic Gameplay Progression, 

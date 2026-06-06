@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var quit_button: Button = $ColorRect2/VBoxContainer/Quit
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	color_rect.hide() # Hides Pause Menu overlay on boot
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
@@ -35,18 +36,25 @@ func toggle_pause():
 	if OS.has_feature("mobile") or OS.has_feature("android"):
 		mobile_pause_button.visible = !new_pause_state
 	
+	# --- DYNAMIC PAUSE MUSIC SWAP ---
+	if new_pause_state:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) # Show cursor
+		
+		MusicManager.play_menu_music()                 # 🎵 Switch to calm menu track!
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)  # Hide cursor
+		MusicManager.play_game_music()
+	
 func _on_resume_pressed() -> void:
 	toggle_pause()
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
-		
 	if OS.has_feature("web") or OS.has_feature("mobile") or OS.has_feature("android"):
-			get_tree().change_scene_to_file("res://scenes/game_screen.tscn")
+		get_tree().change_scene_to_file("res://scenes/game_screen.tscn")
 	else:
-			get_tree().quit()
+		get_tree().quit()
 
 func _on_mobile_pause_button_pressed() -> void:
 	mobile_pause_button.release_focus()
 	toggle_pause()
-
